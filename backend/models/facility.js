@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const facilitySchema = new Schema({
 
-    title: String,
+    facilityTitle: String,
     description: String
 
 })
