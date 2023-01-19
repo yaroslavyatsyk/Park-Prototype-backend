@@ -47,7 +47,7 @@ route.get('/locations/:id', async(req, res) => {
     else {
     
     try {
-        const location = await emp.findById(req.params.id)
+        const location = await emp.findById(id)
         res.status(200).send(location)
     }
     catch(error) {
@@ -58,7 +58,7 @@ route.get('/locations/:id', async(req, res) => {
 
 //TODO - Update a Note with noteId
 //http://mongoosejs.com/docs/api.html#findbyidandupdate_findByIdAndUpdate
-route.put('/locations/id', async(req, res) => {
+route.put('/locations/:id', async(req, res) => {
     // Validate request
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
@@ -69,7 +69,7 @@ route.put('/locations/id', async(req, res) => {
     else {
     try {
         console.log(req.body)
-        const updatedLocation = await emp.findByIdAndUpdate(req.params.id, req.body)
+        const updatedLocation = await loc.findByIdAndUpdate(id, req.body)
         //console.log(updatedBook)
         await updatedLocation.save()
         res.status(202).send(updatedLocation)
@@ -83,7 +83,7 @@ route.put('/locations/id', async(req, res) => {
 //http://mongoosejs.com/docs/api.html#findbyidandremove_findByIdAndRemove
 route.delete('/locations/:id', async (req, res) => {
     // Validate request
-    let id = req.params.eid
+    let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
         return res.status(400).send({
             message: "Location's content can not be empty"
@@ -92,7 +92,7 @@ route.delete('/locations/:id', async (req, res) => {
     //TODO - Write your code here to delete the note using
     else {
     try {
-        const location = await loc.findByIdAndDelete(req.params.eid)
+        const location = await loc.findByIdAndDelete(id)
     
         if (!location) { 
             res.status(404).send("No item found")
