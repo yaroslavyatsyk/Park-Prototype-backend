@@ -4,8 +4,11 @@ const Schema = mongoose.Schema;
 
 const facilitySchema = new Schema({
 
-    facilityTitle: String,
-    description: String
+    facilityName: {
+        
+        type: String,
+        required: true},
+    facilityDescription: String
 
 })
 

@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
 
-    text: String,
+    text: {
+     type: String,
+     required: true   
+    },
     creator: String,
     date: Date,
     postID: String

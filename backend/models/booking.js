@@ -6,7 +6,7 @@ const bookingSchema = new Schema({
 
     booking_id: String,
     user_id: String,
-    facility: String,
+    facilityID: String,
     start_date: Date,
     end_date: Date,
 
