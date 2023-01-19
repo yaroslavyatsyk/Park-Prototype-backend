@@ -7,7 +7,7 @@ const messageSchema = new Schema({
     text: String,
     creator: String,
     date: Date,
-    post: String
+    postID: String
 
 })
 
