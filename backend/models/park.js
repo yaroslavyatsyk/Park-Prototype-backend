@@ -16,6 +16,10 @@ const parkSchema = new Schema({
         ref: 'user',
         required: true
     }],
+    facilities : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'facilityModel',
+    }]
 
 })
 

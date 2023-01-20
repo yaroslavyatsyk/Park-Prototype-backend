@@ -16,7 +16,7 @@ const messageSchema = new Schema({
     date: Date,
     posts: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'post',
+        ref: 'postModel',
         required: true
     }]
 
