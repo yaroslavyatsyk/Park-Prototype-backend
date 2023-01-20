@@ -5,7 +5,11 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
 
     title: {type: String, required: true},
-    userID: String,
+    users : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
+    }],
     date: Date
 
 })
