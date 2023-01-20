@@ -8,9 +8,17 @@ const messageSchema = new Schema({
      type: String,
      required: true   
     },
-    creator: String,
+    users : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
+    }],
     date: Date,
-    postID: String
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'post',
+        required: true
+    }]
 
 })
 

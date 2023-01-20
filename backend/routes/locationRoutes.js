@@ -2,7 +2,7 @@ const express = require('express')
 const route = express.Router()
 const loc = require('../models/location')
 
-route.post('/location', async(req, res) => {
+route.post('/locations', async(req, res) => {
     // Validate request
     const newLocation = req.body;
     if(JSON.stringify(newLocation) == null || JSON.stringify(newLocation) == '{}') {
