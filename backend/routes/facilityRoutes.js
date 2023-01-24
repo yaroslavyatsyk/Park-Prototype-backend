@@ -43,8 +43,8 @@ route.get('/facilities/', async(req, res) => {
     }
     else {
     try {
-        const facilities = await equipment.find({ $or: [{facilityName: `/^${keyword} `}, {facilityName: `/${keyword} ^`}, {facilityName: `/ ${keyword} /`}
-    , {facilityName: `/^${keyword}`}, {facilityName: `${keyword}/^`}, {facilityName: `/${keyword}/`}]})
+        const facilities = await equipment.find({ $or: [{facilityName: `/^${keyword} `}, {facilityName: `/${keyword} $/`}, {facilityName: `/ ${keyword} /`}
+    , {facilityName: `/^${keyword}`}, {facilityName: `${keyword}$/`}, {facilityName: `/${keyword}/`}]})
         res.status(200).send(facilities)
     }
     catch(error) {
