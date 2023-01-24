@@ -12,7 +12,7 @@ app.use('/api/emp',locationRouter)
 
 mongoose.Promise = global.Promise
 
-mongoose.connect("mongodb+srv://yaroslav9728:Education2022@cluster0.elr77qb.mongodb.net/ass1db?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://capstone:Capstone2023@cluster0.vaju5po.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {

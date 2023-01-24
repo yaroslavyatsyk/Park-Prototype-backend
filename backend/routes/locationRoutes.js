@@ -7,13 +7,13 @@ route.post('/locations', async(req, res) => {
     const newLocation = req.body;
     if(JSON.stringify(newLocation) == null || JSON.stringify(newLocation) == '{}') {
         return res.status(400).send({
-            message: "Employee content can not be empty"
+            message: "Location content can not be empty"
         });
     }
     else {
 
     try {
-        const location = new emp(newLocation)
+        const location = new loc(newLocation)
         await location.save()
         res.status(201).send(location)
     }
@@ -47,7 +47,7 @@ route.get('/locations/:id', async(req, res) => {
     else {
     
     try {
-        const location = await emp.findById(id)
+        const location = await loc.findById(id)
         res.status(200).send(location)
     }
     catch(error) {
