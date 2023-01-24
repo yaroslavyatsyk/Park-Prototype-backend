@@ -23,7 +23,7 @@ route.post('/locations', async(req, res) => {
 }
 });
 
-//http://mongoosejs.com/docs/api.html#find_find
+
 route.get('/locations', async(req, res) => {
     try {
         const locations = await loc.find({})
@@ -35,7 +35,7 @@ route.get('/locations', async(req, res) => {
 });
 
 
-//http://mongoosejs.com/docs/api.html#findbyid_findById
+
 route.get('/locations/:id', async(req, res) => {
     // Validate request
     let id = req.params.id
@@ -56,8 +56,7 @@ route.get('/locations/:id', async(req, res) => {
 }
 });
 
-//TODO - Update a Note with noteId
-//http://mongoosejs.com/docs/api.html#findbyidandupdate_findByIdAndUpdate
+
 route.put('/locations/:id', async(req, res) => {
     // Validate request
     let id = req.params.id
@@ -70,7 +69,6 @@ route.put('/locations/:id', async(req, res) => {
     try {
         console.log(req.body)
         const updatedLocation = await loc.findByIdAndUpdate(id, req.body)
-        //console.log(updatedBook)
         await updatedLocation.save()
         res.status(202).send(updatedLocation)
       } catch (err) {
@@ -79,8 +77,7 @@ route.put('/locations/:id', async(req, res) => {
     }
 });
 
-//TODO - Delete a Note with noteId
-//http://mongoosejs.com/docs/api.html#findbyidandremove_findByIdAndRemove
+
 route.delete('/locations/:id', async (req, res) => {
     // Validate request
     let id = req.params.id

@@ -36,7 +36,7 @@ route.get('/facilities/', async(req, res) => {
 
     if(JSON.stringify(keyword) == null || JSON.stringify(keyword) == '{}') {
         return res.status(400).send({
-            message: "Facility keyword can not be empty"
+            message: "Facility's keyword can not be empty"
         });
     }
     else {
