@@ -3,7 +3,6 @@ const route = express.Router()
 const equipment = require('../models/facility')
 
 route.post('/facilities', async(req, res) => {
-    // Validate request
     const newFacility = req.body;
     if(JSON.stringify(newFacility) == null || JSON.stringify(newFacility) == '{}') {
         return res.status(400).send({
@@ -23,7 +22,6 @@ route.post('/facilities', async(req, res) => {
 }
 });
 
-//http://mongoosejs.com/docs/api.html#find_find
 route.get('/facilities', async(req, res) => {
     try {
         const facilities = await equipment.find({})
@@ -54,9 +52,8 @@ route.get('/facilities/', async(req, res) => {
 });
 
 
-//http://mongoosejs.com/docs/api.html#findbyid_findById
 route.get('/facilities/:id', async(req, res) => {
-    // Validate request
+
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
         return res.status(400).send({
@@ -77,7 +74,7 @@ route.get('/facilities/:id', async(req, res) => {
 
 
 route.put('/facilities/:id', async(req, res) => {
-    // Validate request
+
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
         return res.status(400).send({
@@ -88,7 +85,7 @@ route.put('/facilities/:id', async(req, res) => {
     try {
         console.log(req.body)
         const updatedInventory = await equipment.findByIdAndUpdate(id, req.body)
-        //console.log(updatedBook)
+    
         await updatedInventory.save()
         res.status(202).send(updatedInventory)
       } catch (err) {
@@ -97,8 +94,7 @@ route.put('/facilities/:id', async(req, res) => {
     }
 });
 
-//TODO - Delete a Note with noteId
-//http://mongoosejs.com/docs/api.html#findbyidandremove_findByIdAndRemove
+
 route.delete('/facilities/:id', async (req, res) => {
     // Validate request
     let id = req.params.id
@@ -107,7 +103,7 @@ route.delete('/facilities/:id', async (req, res) => {
             message: "Facilities's content can not be empty"
         });
     }
-    //TODO - Write your code here to delete the note using
+
     else {
     try {
         const facility = await equipment.findByIdAndDelete(id)

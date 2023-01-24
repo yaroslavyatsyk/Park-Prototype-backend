@@ -2,8 +2,8 @@ const express = require('express')
 const route = express.Router()
 const order = require('../models/booking')
 
-route.post('/booking', async(req, res) => {
-    // Validate request
+route.post('/bookings', async(req, res) => {
+
     const newBooking = req.body;
     if(JSON.stringify(newBooking) == null || JSON.stringify(newBooking) == '{}') {
         return res.status(400).send({
@@ -23,7 +23,7 @@ route.post('/booking', async(req, res) => {
 }
 });
 
-//http://mongoosejs.com/docs/api.html#find_find
+
 route.get('/bookings', async(req, res) => {
     try {
         const bookings = await order.find({})
@@ -35,7 +35,7 @@ route.get('/bookings', async(req, res) => {
 });
 
 
-//http://mongoosejs.com/docs/api.html#findbyid_findById
+
 route.get('/bookings/:id', async(req, res) => {
     // Validate request
     let id = req.params.id
@@ -56,10 +56,9 @@ route.get('/bookings/:id', async(req, res) => {
 }
 });
 
-//TODO - Update a Note with noteId
-//http://mongoosejs.com/docs/api.html#findbyidandupdate_findByIdAndUpdate
+
 route.put('/bookings/:id', async(req, res) => {
-    // Validate request
+
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
         return res.status(400).send({
@@ -70,7 +69,7 @@ route.put('/bookings/:id', async(req, res) => {
     try {
         console.log(req.body)
         const updatedBooking = await order.findByIdAndUpdate(id, req.body)
-        //console.log(updatedBook)
+        
         await updatedBooking.save()
         res.status(202).send(updatedBooking)
       } catch (err) {
@@ -79,17 +78,16 @@ route.put('/bookings/:id', async(req, res) => {
     }
 });
 
-//TODO - Delete a Note with noteId
-//http://mongoosejs.com/docs/api.html#findbyidandremove_findByIdAndRemove
+
 route.delete('/bookings/:id', async (req, res) => {
-    // Validate request
+ 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
         return res.status(400).send({
             message: "Location's content can not be empty"
         });
     }
-    //TODO - Write your code here to delete the note using
+
     else {
     try {
         const booking = await order.findByIdAndDelete(id)

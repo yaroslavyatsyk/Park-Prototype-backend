@@ -2,13 +2,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bookingRouter = require('./routes/bookingRoutes')
 const locationRouter = require('./routes/locationRoutes')
+const facilityRouter = require('./routes/facilityRoutes')
+const eventRouter = require('./routes/eventRoutes')
 
 const app = express()
 app.use(express.json())
 
-app.use('/api',bookingRouter)
-app.use('/api/emp',locationRouter)
-
+app.use('/',bookingRouter)
+app.use('/',locationRouter)
+app.use('/',facilityRouter)
+app.use('/',eventRouter)
 
 mongoose.Promise = global.Promise
 
