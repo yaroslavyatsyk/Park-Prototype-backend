@@ -4,6 +4,7 @@ const bookingRouter = require('./routes/bookingRoutes')
 const locationRouter = require('./routes/locationRoutes')
 const facilityRouter = require('./routes/facilityRoutes')
 const eventRouter = require('./routes/eventRoutes')
+const cors = require('cors')
 
 const app = express()
 app.use(express.json())
@@ -12,6 +13,7 @@ app.use('/',bookingRouter)
 app.use('/',locationRouter)
 app.use('/',facilityRouter)
 app.use('/',eventRouter)
+app.use(cors())
 
 mongoose.Promise = global.Promise
 
