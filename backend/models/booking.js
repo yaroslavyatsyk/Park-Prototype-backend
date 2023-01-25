@@ -5,14 +5,9 @@ const Schema = mongoose.Schema;
 const bookingSchema = new Schema({
 
     booking_id: String,
-    users: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'event',
-        required: true
-    }],
     facilities: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'facility',
+        ref: 'facilityModel',
         required: true
     }],
     start_date: Date,

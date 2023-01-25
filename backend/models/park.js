@@ -19,7 +19,14 @@ const parkSchema = new Schema({
     facilities : [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'facilityModel',
-    }]
+        required: true
+    }],
+
+    location: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'locationModel',
+        required: true
+    }
 
 })
 
