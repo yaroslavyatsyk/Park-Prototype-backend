@@ -10,8 +10,8 @@ const bookingSchema = new Schema({
         ref: 'facilityModel',
         required: true
     }],
-    start_date: Date,
-    end_date: Date,
+
+    date_of_booking: {type: Date, default: Date.now}
 
 })
 
