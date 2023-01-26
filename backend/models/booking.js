@@ -17,7 +17,7 @@ const bookingSchema = new Schema({
         required: true
     },
 
-    date_of_booking: {type: Date, default: Date.now}
+    booking_date: {type: Date, default: Date.now}
 
 })
 

@@ -8,7 +8,13 @@ const facilitySchema = new Schema({
         
         type: String,
         required: true},
-    facilityDescription: String
+    facilityDescription: String,
+
+    price: {
+        type: Number,
+        required: true
+    },
+    
 
 })
 
