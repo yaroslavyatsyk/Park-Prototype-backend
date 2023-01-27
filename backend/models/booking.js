@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema({
 
-    booking_id: String,
+    bookingNumber: String,
     facilities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'facilityModel',
