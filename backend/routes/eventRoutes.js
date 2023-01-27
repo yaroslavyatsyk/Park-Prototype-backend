@@ -138,7 +138,7 @@ route.delete('/events/:id', async (req, res) => {
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
         return res.status(400).send({
-            message: "Facilities's content can not be empty"
+            message: "Event's content can not be empty"
         });
     }
 
