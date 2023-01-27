@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-const facilitySchema = new Schema({
+const amentitySchema = new Schema({
 
-    facilityName: {
+    amentityName: {
         
         type: String,
         required: true},
-    facilityDescription: String,
+    amentityDescription: String,
 
     price: {
         type: Number,
@@ -18,6 +18,6 @@ const facilitySchema = new Schema({
 
 })
 
-const facilityModel = mongoose.model("facilityModel", facilitySchema);
+const amentityModel = mongoose.model("amentityModel", amentitySchema);
 
-module.exports = facilityModel
+module.exports = amentityModel

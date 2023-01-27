@@ -1,10 +1,10 @@
 const express = require('express')
 const route = express.Router()
-const equipment = require('../models/facility')
+const equipment = require('../models/amentity')
 
-route.post('/facilities', async(req, res) => {
-    const newFacility = req.body;
-    if(JSON.stringify(newFacility) == null || JSON.stringify(newFacility) == '{}') {
+route.post('/amenities', async(req, res) => {
+    const newAmentity = req.body;
+    if(JSON.stringify(newAmentity) == null || JSON.stringify(newAmentity) == '{}') {
         return res.status(400).send({
             message: "facility's content can not be empty"
         });
@@ -12,7 +12,7 @@ route.post('/facilities', async(req, res) => {
     else {
 
     try {
-        const item = new equipment(newLocation)
+        const item = new equipment(newAmentity)
         await item.save()
         res.status(201).send(item)
     }
@@ -22,16 +22,16 @@ route.post('/facilities', async(req, res) => {
 }
 });
 
-route.get('/facilities', async(req, res) => {
+route.get('/amenities', async(req, res) => {
     try {
-        const facilities = await equipment.find({})
-        res.status(200).send(facilities)
+        const amentities = await equipment.find({})
+        res.status(200).send(amentities)
     }
     catch(error) {
         res.status(500).send(error)
     }
 });
-route.get('/facilities/', async(req, res) => {
+route.get('/amenities/', async(req, res) => {
     let keyword = req.query.keyword
 
     if(JSON.stringify(keyword) == null || JSON.stringify(keyword) == '{}') {
@@ -41,9 +41,9 @@ route.get('/facilities/', async(req, res) => {
     }
     else {
     try {
-        const facilities = await equipment.find({ $or: [{facilityName: `/^${keyword} `}, {facilityName: `/${keyword} $/`}, {facilityName: `/ ${keyword} /`}
+        const amentities = await equipment.find({ $or: [{facilityName: `/^${keyword} `}, {facilityName: `/${keyword} $/`}, {facilityName: `/ ${keyword} /`}
     , {facilityName: `/^${keyword}`}, {facilityName: `${keyword}$/`}, {facilityName: `/${keyword}/`}]})
-        res.status(200).send(facilities)
+        res.status(200).send(amentities)
     }
     catch(error) {
         res.status(500).send(error)
@@ -52,7 +52,7 @@ route.get('/facilities/', async(req, res) => {
 });
 
 
-route.get('/facilities/:id', async(req, res) => {
+route.get('/amenities/:id', async(req, res) => {
 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
@@ -73,7 +73,7 @@ route.get('/facilities/:id', async(req, res) => {
 });
 
 
-route.put('/facilities/:id', async(req, res) => {
+route.put('/amenities/:id', async(req, res) => {
 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
@@ -95,7 +95,7 @@ route.put('/facilities/:id', async(req, res) => {
 });
 
 
-route.delete('/facilities/:id', async (req, res) => {
+route.delete('/amenities/:id', async (req, res) => {
     // Validate request
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
