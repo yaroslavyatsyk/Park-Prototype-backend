@@ -5,7 +5,13 @@ const eventSchema = new Schema({
 
     date: {type: Date, default: Date.now},
     title: {type: String, required: true},
-    description: String
+    description: String,
+
+    park: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'parkModel',
+        required: true
+    }
 
 })
 
