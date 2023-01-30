@@ -11,7 +11,9 @@ const eventSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'parkModel',
         required: true
-    }
+    },
+
+    description: String
 
 })
 
