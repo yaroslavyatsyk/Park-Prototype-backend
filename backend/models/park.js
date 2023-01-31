@@ -26,7 +26,8 @@ const parkSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'locationModel',
         required: true
-    }
+    },
+    image: String
 
 })
 

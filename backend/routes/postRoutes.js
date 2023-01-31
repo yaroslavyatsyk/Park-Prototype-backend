@@ -56,12 +56,14 @@ app.post('/posts', (req, res) => {
     })
 })
 
-app.get('/posts/:id/messages', (req, res) => {
-    Post.find(req.params.id, (err, messages) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(200).send(messages);
-      }
-    });
+app.get('/posts/:id', (req, res) => {
+  Post.findById(req.params.id, (err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    } else if (!post) {
+      res.status(404).send({ message: 'Post not found' });
+    } else {
+      res.status(200).send(post.messages);
+    }
   });
+});

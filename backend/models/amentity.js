@@ -14,6 +14,7 @@ const amentitySchema = new Schema({
         type: Number,
         required: true
     },
+    image: String
     
 
 })
