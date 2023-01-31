@@ -16,7 +16,7 @@ app.post('/posts', (req, res) => {
   });
   
   app.get('/posts', (req, res) => {
-    Post.find({}, (err, posts) => {
+    post.find({}, (err, posts) => {
       if (err) {
         res.status(500).send(err);
       } else {
@@ -26,7 +26,7 @@ app.post('/posts', (req, res) => {
   });
   
   app.patch('/posts/:id', (req, res) => {
-    Post.findByIdAndUpdate(req.params.id, {$set: {title: req.body.title, content: req.body.content}}, (err) => {
+    post.findByIdAndUpdate(req.params.id, {$set: {title: req.body.title, content: req.body.content}}, (err) => {
       if (err) {
         res.status(500).send(err);
       } else {
@@ -36,7 +36,7 @@ app.post('/posts', (req, res) => {
   });
   
   app.delete('/posts/:id', (req, res) => {
-    Post.findByIdAndDelete(req.params.id, (err) => {
+    post.findByIdAndDelete(req.params.id, (err) => {
       if (err) {
         res.status(500).send(err);
       } else {
@@ -46,7 +46,7 @@ app.post('/posts', (req, res) => {
   });
   
   app.patch('/posts/:id/messages', (req, res) => {
-      Post.findByIdAndUpdate(req.params.id, {$push: {messages: {author: req.body.author, message: req.body.message}}}, (err) => {
+      post.findByIdAndUpdate(req.params.id, {$push: {messages: {author: req.body.author, message: req.body.message}}}, (err) => {
       if (err) {
         res.status(500).send(err);
       } else {
@@ -57,7 +57,7 @@ app.post('/posts', (req, res) => {
 })
 
 app.get('/posts/:id', (req, res) => {
-  Post.findById(req.params.id, (err, post) => {
+  post.findById(req.params.id, (err, post) => {
     if (err) {
       res.status(500).send(err);
     } else if (!post) {
