@@ -1,3 +1,9 @@
+const post = require('../models/post')
+
+const express = require('express')
+
+const app = express.Router()
+
 app.post('/posts', (req, res) => {
     const post = new Post({
       title: req.body.title,
@@ -67,3 +73,5 @@ app.get('/posts/:id', (req, res) => {
     }
   });
 });
+
+module.exports = app
