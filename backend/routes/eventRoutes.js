@@ -50,7 +50,7 @@ route.get('/events/keyword', async(req, res) => {
     }
 }
 });
-route.get('/events/', async(req, res) => {
+route.get('/events/date', async(req, res) => {
     let date = req.query.date
 
     if(JSON.stringify(date) == null || JSON.stringify(date) == '{}') {
@@ -68,7 +68,7 @@ route.get('/events/', async(req, res) => {
     }
 }
 });
-route.get('/events/', async(req, res) => {
+route.get('/events/date-range', async(req, res) => {
     let start_date = req.query.start_date
     let end_date = req.query.end_date
 
