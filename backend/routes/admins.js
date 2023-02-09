@@ -50,7 +50,7 @@ router.route('/:id').delete( (req,res)=>{
     })
 // update admin with id
 
-router.route("/update/:id").put((req,res)=>{
+router.route("/update/:id").patch((req,res)=>{
 
     const id = req.params.eid
     const newAdmin = req.body

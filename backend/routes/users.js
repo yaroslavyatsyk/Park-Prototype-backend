@@ -65,7 +65,7 @@ router.route('/:id').delete( (req,res)=>{
     })
 // update User with id
 
-router.route("/update/:id").put((req,res)=>{
+router.route("/update/:id").patch((req,res)=>{
   const email = req.params.id
   const newUser = req.body
 
