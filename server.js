@@ -6,7 +6,7 @@ const eventRouter = require('./backend/routes/eventRoutes')
 const adminsRouter = require("./backend/routes/admins");
 const msgRouter = require("./backend/routes/messageRoutes")
 const parkRouter = require("./backend/routes/parkRoutes")
-const postRouter = require("./backend/routes/postRoutes")
+const postRoutes = require("./backend/routes/postRoutes")
 const usersRouter = require("./backend/routes/users");
 const ticketRouter = require("./backend/routes/ticketRoutes")
 const cors = require('cors')
@@ -20,7 +20,7 @@ app.use('/',eventRouter)
 app.use('/', adminsRouter);
 app.use('/', parkRouter)
 app.use('/', msgRouter)
-app.use('/', postRouter)
+app.use('/', postRoutes)
 // app.use("/client",clientsRouter)
 app.use("/user", usersRouter);
 app.use("/",ticketRouter)
