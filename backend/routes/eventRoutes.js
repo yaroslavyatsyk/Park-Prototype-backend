@@ -31,7 +31,7 @@ route.get('/events', async(req, res) => {
         res.status(500).send(error)
     }
 });
-route.get('/events/', async(req, res) => {
+route.get('/events/keyword', async(req, res) => {
     let keyword = req.query.name
 
     if(JSON.stringify(keyword) == null || JSON.stringify(keyword) == '{}') {
@@ -111,7 +111,7 @@ route.get('/events/:id', async(req, res) => {
 });
 
 
-route.put('/events/:id', async(req, res) => {
+route.patch('/events/:id', async(req, res) => {
 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {

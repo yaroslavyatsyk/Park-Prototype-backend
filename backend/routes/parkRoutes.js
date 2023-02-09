@@ -31,7 +31,7 @@ route.get('/parks', async(req, res) => {
         res.status(500).send(error)
     }
 });
-route.get('/parks/', async(req, res) => {
+route.get('/parks/search', async(req, res) => {
     let keyword = req.query.name
 
     if(JSON.stringify(keyword) == null || JSON.stringify(keyword) == '{}') {
@@ -73,7 +73,7 @@ route.get('/parks/:id', async(req, res) => {
 });
 
 
-route.put('/parks/:id', async(req, res) => {
+route.patch('/parks/:id', async(req, res) => {
 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
@@ -118,5 +118,3 @@ route.delete('/parks/:id', async (req, res) => {
     }
 });
 module.exports = route
-
-

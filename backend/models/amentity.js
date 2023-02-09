@@ -10,13 +10,44 @@ const amentitySchema = new Schema({
         required: true},
     amentityDescription: String,
 
-    price: {
-        type: Number,
-        required: true
+    image: {type: String, required: true},
+
+    /*isAvailable: {
+        type: Boolean,
+        required: true,
+        default: true
     },
-    image: String
+    */
+    totalAmount: {
+        type: Number,
+        required: true,
+        validate(value) {
+          if(value < 0) {
+            throw new Error("Can not be negative number")
+          }  
+        },
+        default: 0
+    },
+    occupiedAmount: {
+        type: Number,
+        required: true,
+
+        validate(value) {
+            if(value < 0) {
+                throw new Error("Can not be negative number")
+            }
+        },
+        default: 0
+    },
     
 
+    
+    
+
+})
+
+amentitySchema.virtual("availiableAmount").get(function() {
+    return this.totalAmount - this.occupiedAmount;
 })
 
 const amentityModel = mongoose.model("amentityModel", amentitySchema);

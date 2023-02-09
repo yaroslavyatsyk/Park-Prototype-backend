@@ -45,7 +45,7 @@ app.post('/posts', (req, res) => {
     });
   });
   
-  app.patch('/posts/:id/messages', (req, res) => {
+  /*app.patch('/posts/:id/messages', (req, res) => {
       post.findByIdAndUpdate(req.params.id, {$push: {messages: {author: req.body.author, message: req.body.message}}}, (err) => {
       if (err) {
         res.status(500).send(err);
@@ -54,7 +54,7 @@ app.post('/posts', (req, res) => {
   
       }
     })
-})
+})*/
 
 app.get('/posts/:id', (req, res) => {
   post.findById(req.params.id, (err, post) => {

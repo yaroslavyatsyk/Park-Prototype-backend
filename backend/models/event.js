@@ -13,9 +13,12 @@ const eventSchema = new Schema({
         required: true
     },
 
-    image: String,
+    image: {
+      type:  String,
+      required: true
+    },
     start_time: {type: String, required: true},
-    end_date: {type: String, required: true}
+    end_time: {type: String, required: true}
 
 })
 

@@ -73,7 +73,7 @@ route.get('/amenities/:id', async(req, res) => {
 });
 
 
-route.put('/amenities/:id', async(req, res) => {
+route.patch('/amenities/:id', async(req, res) => {
 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {

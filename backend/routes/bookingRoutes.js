@@ -57,7 +57,7 @@ route.get('/bookings/:id', async(req, res) => {
 });
 
 
-route.put('/bookings/:id', async(req, res) => {
+route.patch('/bookings/:id', async(req, res) => {
 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {

@@ -11,9 +11,9 @@ const parkSchema = new Schema({
     description: {
        type: String 
     },
-    users : [{
+    clients : [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        ref: 'client',
         required: true
     }],
     facilities : [{
@@ -21,17 +21,13 @@ const parkSchema = new Schema({
         ref: 'facilityModel',
         required: true
     }],
-
-    location: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'locationModel',
+    image: {
+        type: String,
         required: true
-    },
-    image: String
+    }
 
 })
 
 const parkModel = mongoose.model("parkModel", parkSchema);
 
 module.exports = parkModel
-

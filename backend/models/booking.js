@@ -17,7 +17,29 @@ const bookingSchema = new Schema({
         required: true
     },
 
-    booking_date: {type: Date, default: Date.now}
+    booking_date: {type: Date, default: Date.now},
+    amount_of_guests: {
+        type: Number,
+        required: true,
+
+        validate(value) {
+            if(value < 0) {
+                throw new Error("Can not be negative number")
+            }
+        },
+        default: 0
+    },
+
+    start_tine: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    end_time: {
+        type: String,
+        required: true,
+        unique: true
+    }
 
 })
 
