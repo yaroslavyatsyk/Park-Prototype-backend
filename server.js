@@ -11,7 +11,7 @@ const usersRouter = require("./backend/routes/users");
 const ticketRouter = require("./backend/routes/ticketRoutes")
 const cors = require('cors')
 
-const Port = process.env.PORT || 3035
+const Port = process.env.PORT || 3036
 
 const app = express()
 app.use(express.json())

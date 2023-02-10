@@ -23,11 +23,11 @@ const bookingSchema = new Schema({
         required: true,
 
         validate(value) {
-            if(value < 0) {
-                throw new Error("Can not be negative number")
+            if(value <= 0) {
+                throw new Error("Can not be negative or zero")
             }
         },
-        default: 0
+        default: 1
     },
 
     start_tine: {
