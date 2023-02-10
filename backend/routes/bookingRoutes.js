@@ -2,7 +2,7 @@ const express = require('express')
 const route = express.Router()
 const order = require('../models/booking')
 
-route.post('/bookings', async(req, res) => {
+route.post('/bookings/add', async(req, res) => {
 
     const newBooking = req.body;
     if(JSON.stringify(newBooking) == null || JSON.stringify(newBooking) == '{}') {
