@@ -62,7 +62,7 @@ res.json(updatedMessage);
 });
 
 // Delete a message by ID
-router.delete('/:id', async (req, res) => {
+router.delete('messages/:id', async (req, res) => {
 const id = req.params.id;
 const deletedMessage = await deleteMessageById(id);
 res.json(deletedMessage);
