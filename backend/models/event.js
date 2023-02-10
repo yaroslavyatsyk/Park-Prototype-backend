@@ -8,7 +8,7 @@ const eventSchema = new Schema({
     description: String,
 
     park: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.String,
         ref: 'parkModel',
         required: true
     },
