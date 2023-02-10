@@ -11,6 +11,8 @@ const usersRouter = require("./backend/routes/users");
 const ticketRouter = require("./backend/routes/ticketRoutes")
 const cors = require('cors')
 
+const Port = process.env.PORT || 3035
+
 const app = express()
 app.use(express.json())
 
@@ -42,6 +44,6 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(3035, () => {
-    console.log(`Server is listening on port http://localhost:${3035}`);
+app.listen(Port, () => {
+    console.log(`Server is listening on port http://localhost:${Port}`);
 });
