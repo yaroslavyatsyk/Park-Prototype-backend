@@ -30,7 +30,7 @@ const bookingSchema = new Schema({
         default: 1
     },
 
-    start_tine: {
+    start_time: {
         type: String,
         required: true,
         unique: true
