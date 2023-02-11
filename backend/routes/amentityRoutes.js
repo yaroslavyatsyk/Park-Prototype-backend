@@ -43,10 +43,13 @@ route.get('/amenities/search', async(req, res) => {
     try {
         const amentities = await amentity.find({
             $or: [
-              {amentityName: new RegExp(`^${keyword}`)},
-              {amentityName: new RegExp(`${keyword}$/`)},
-              {amentityName: new RegExp(`/${keyword}/`)}
-            ]
+                {amentityName: {$regex: keyword, $options: 'i'}},
+                {amentityName: {$regex: '^' + keyword, $options: 'i'}},
+                {amentityName: {$regex: keyword + '$', $options: 'i'}},
+                {amentityName: {$regex: ' ' + keyword + ' ', $options: 'i'}},
+                {amentityName: {$regex: '^' + keyword + ' ', $options: 'i'}},
+                {amentityName: {$regex: ' ' + keyword + '$', $options: 'i'}}
+              ]
           });
         res.status(200).send(amentities)
     }
