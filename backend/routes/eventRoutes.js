@@ -1,9 +1,8 @@
 const express = require('express')
 const route = express.Router()
-const event = require('../models/event');
-const { verifytoken } = require('./func');
+const event = require('../models/event')
 
-route.post('/events', verifytoken, async(req, res) => {
+route.post('/events', async(req, res) => {
     const newEvent = req.body;
     if(JSON.stringify(newEvent) == null || JSON.stringify(newEvent) == '{}') {
         return res.status(400).send({
@@ -23,7 +22,7 @@ route.post('/events', verifytoken, async(req, res) => {
 }
 });
 
-route.get('/events', verifytoken, async(req, res) => {
+route.get('/events', async(req, res) => {
     try {
         const events = await event.find({})
         res.status(200).send(events)
@@ -32,7 +31,7 @@ route.get('/events', verifytoken, async(req, res) => {
         res.status(500).send(error)
     }
 });
-route.get('/events/keyword', verifytoken, async(req, res) => {
+route.get('/events/keyword', async(req, res) => {
     let keyword = req.query.name
 
     if(JSON.stringify(keyword) == null || JSON.stringify(keyword) == '{}') {
@@ -51,7 +50,7 @@ route.get('/events/keyword', verifytoken, async(req, res) => {
     }
 }
 });
-route.get('/events/date', verifytoken, async(req, res) => {
+route.get('/events/date', async(req, res) => {
     let date = req.query.date
 
     if(JSON.stringify(date) == null || JSON.stringify(date) == '{}') {
@@ -69,7 +68,7 @@ route.get('/events/date', verifytoken, async(req, res) => {
     }
 }
 });
-route.get('/events/date-range', verifytoken, async(req, res) => {
+route.get('/events/date-range', async(req, res) => {
     let start_date = req.query.start_date
     let end_date = req.query.end_date
 
@@ -91,7 +90,7 @@ route.get('/events/date-range', verifytoken, async(req, res) => {
 });
 
 
-route.get('/events/:id', verifytoken, async(req, res) => {
+route.get('/events/:id', async(req, res) => {
 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
@@ -112,7 +111,7 @@ route.get('/events/:id', verifytoken, async(req, res) => {
 });
 
 
-route.patch('/events/:id', verifytoken, async(req, res) => {
+route.patch('/events/:id', async(req, res) => {
 
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {
@@ -134,7 +133,7 @@ route.patch('/events/:id', verifytoken, async(req, res) => {
 });
 
 
-route.delete('/events/:id', verifytoken, async (req, res) => {
+route.delete('/events/:id', async (req, res) => {
     // Validate request
     let id = req.params.id
     if(JSON.stringify(id) == null || JSON.stringify(id) == '{}') {

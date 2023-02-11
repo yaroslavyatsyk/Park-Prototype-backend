@@ -1,17 +1,14 @@
 const post = require('../models/post')
 
-const express = require('express');
-const { verifytoken } = require('./func');
+const express = require('express')
 
 const app = express.Router()
 
-app.post('/posts', verifytoken, (req, res) => {
-
-  user = verifytoken()
+app.post('/posts', (req, res) => {
     const post = new Post({
       title: req.body.title,
       content: req.body.content,
-      author: req.user,
+      author: req.body.author,
       messages: req.body.messages
     });
   
@@ -24,7 +21,7 @@ app.post('/posts', verifytoken, (req, res) => {
     });
   });
   
-  app.get('/posts', verifytoken, (req, res) => {
+  app.get('/posts', (req, res) => {
     post.find({}, (err, posts) => {
       if (err) {
         res.status(500).send(err);
@@ -34,7 +31,7 @@ app.post('/posts', verifytoken, (req, res) => {
     });
   });
   
-  app.patch('/posts/:id', verifytoken,(req, res) => {
+  app.patch('/posts/:id', (req, res) => {
     post.findByIdAndUpdate(req.params.id, {$set: {title: req.body.title, content: req.body.content}}, (err) => {
       if (err) {
         res.status(500).send(err);
@@ -44,7 +41,7 @@ app.post('/posts', verifytoken, (req, res) => {
     });
   });
   
-  app.delete('/posts/:id', verifytoken, (req, res) => {
+  app.delete('/posts/:id', (req, res) => {
     post.findByIdAndDelete(req.params.id, (err) => {
       if (err) {
         res.status(500).send(err);
@@ -65,7 +62,7 @@ app.post('/posts', verifytoken, (req, res) => {
     })
 })*/
 
-app.get('/posts/:id', verifytoken, (req, res) => {
+app.get('/posts/:id', (req, res) => {
   post.findById(req.params.id, (err, post) => {
     if (err) {
       res.status(500).send(err);
