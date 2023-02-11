@@ -36,13 +36,21 @@ route.get('/parks/search', async(req, res) => {
 
     if(JSON.stringify(keyword) == null || JSON.stringify(keyword) == '{}') {
         return res.status(400).send({
-            message: "Park's keyword can not be empty"
+            message: "Facility keyword can not be empty"
         });
     }
     else {
     try {
-        const parks = await park.find({ $or: [{parkName: `/^${keyword} `}, {parkName: `/${keyword} $/`}, {parkName: `/ ${keyword} /`}
-    , {parkName: `/^${keyword}`}, {parkName: `${keyword}$/`}, {parkName: `/${keyword}/`}]})
+        const parks = await park.find({
+            $or: [
+                {parkName: {$regex: keyword, $options: 'i'}},
+                {parkName: {$regex: '^' + keyword, $options: 'i'}},
+                {parkName: {$regex: keyword + '$', $options: 'i'}},
+                {parkName: {$regex: ' ' + keyword + ' ', $options: 'i'}},
+                {parkName: {$regex: '^' + keyword + ' ', $options: 'i'}},
+                {parkName: {$regex: ' ' + keyword + '$', $options: 'i'}}
+              ]
+          });
         res.status(200).send(parks)
     }
     catch(error) {
