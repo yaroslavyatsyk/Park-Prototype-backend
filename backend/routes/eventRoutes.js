@@ -41,8 +41,16 @@ route.get('/events/keyword', async(req, res) => {
     }
     else {
     try {
-        const events = await event.find({ $or: [{title: `/^${keyword} `}, {title: `/${keyword} $/`}, {facilityName: `/ ${keyword} /`}
-    , {facilityName: `/^${keyword}`}, {facilityName: `${keyword}$/`}, {facilityName: `/${keyword}/`}]})
+        const events = await event.find({
+            $or: [
+                {title: {$regex: keyword, $options: 'i'}},
+                {title: {$regex: '^' + keyword, $options: 'i'}},
+                {title: {$regex: keyword + '$', $options: 'i'}},
+                {title: {$regex: ' ' + keyword + ' ', $options: 'i'}},
+                {title: {$regex: '^' + keyword + ' ', $options: 'i'}},
+                {title: {$regex: ' ' + keyword + '$', $options: 'i'}}
+              ]
+          });
         res.status(200).send(events)
     }
     catch(error) {
