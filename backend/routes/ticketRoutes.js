@@ -1,8 +1,9 @@
 const express = require('express')
 const Ticket = require('../models/ticket')
+const { verifytoken } = require('./func')
 const router = new express.Router()
 
-router.post('/tickets', async (req, res) => {
+router.post('/tickets', verifytoken, async (req, res) => {
     const ticket = new Ticket(req.body)
 
     try {
@@ -13,7 +14,7 @@ router.post('/tickets', async (req, res) => {
     }
 })
 
-router.get('/tickets', async (req, res) => {
+router.get('/tickets', verifytoken, async (req, res) => {
     try {
         const tickets = await Ticket.find({})
         res.send(tickets)
@@ -22,7 +23,7 @@ router.get('/tickets', async (req, res) => {
     }
 })
 
-router.get('/tickets/:id', async (req, res) => {
+router.get('/tickets/:id', verifytoken, async (req, res) => {
     const _id = req.params.id
 
     try {
@@ -38,7 +39,7 @@ router.get('/tickets/:id', async (req, res) => {
     }
 })
 
-router.patch('/tickets/:id', async (req, res) => {
+router.patch('/tickets/:id', verifytoken, async (req, res) => {
     const updates = Object.keys(req.body)
     const allowedUpdates = ['purchase_date', 'ticket_amount']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
@@ -60,7 +61,7 @@ router.patch('/tickets/:id', async (req, res) => {
     }
 })
 
-router.delete('/tickets/:id', async (req, res) => {
+router.delete('/tickets/:id', verifytoken, async (req, res) => {
     try {
         const ticket = await Ticket.findByIdAndDelete(req.params.id)
 
