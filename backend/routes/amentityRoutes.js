@@ -32,7 +32,7 @@ route.get('/amenities', async(req, res) => {
     }
 });
 route.get('/amenities/search', async(req, res) => {
-    let keyword = req.query.keyword.trim()
+    let keyword = req.query.keyword
 
     if(JSON.stringify(keyword) == null || JSON.stringify(keyword) == '{}') {
         return res.status(400).send({

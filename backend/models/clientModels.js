@@ -35,7 +35,7 @@ const ClientSchema = new mongoose.Schema({
     }],
     events: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Event',
+        ref: 'eventModel',
         required: true
     }],
     isLoggedIn: {

@@ -13,7 +13,7 @@ const parkSchema = new Schema({
     },
     clients : [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'client',
+        ref: 'Client',
         required: true
     }],
     facilities : [{
